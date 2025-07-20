@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 
 import cors from "cors";
 import { connetToSocket } from "./controller/socketManager.js";
+import userRoutes from './routes/user.route.js'
 
 dotenv.config();
 
@@ -30,6 +31,10 @@ mongoose
     console.log(error);
   });
 
+
+  app.use("/api/v1/users", userRoutes);
+
 server.listen(app.get("port"), () => {
   console.log("server is running");
 });
+
